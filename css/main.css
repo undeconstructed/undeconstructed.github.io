@@ -103,23 +103,43 @@ body {
   color: rgb(200, 200, 200);
 }
 
+.slides .up {
+  z-index: 1;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+.slides .up a {
+  font-size: 2em;
+  color: #aaaaaa;
+  text-decoration: none;
+  outline: none;
+}
+.slides .up a:hover {
+  color: white;
+}
+
 .slides {
 }
-.slides > div {
+.slides .slide {
   height: 100vh;
   position: relative;
-  background-color: rgba(255,255,255,0.3);
-}
-.slides > .slide+.slide {
-  margin-top: 10px;
-}
-.slides > .slide {
+  /* background-color: rgba(255,255,255,0.3); */
+  background-color: #4d4d4d;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.slides .slide+.slide {
+  margin-top: 10px;
+}
+
+.slide a {
+  color: inherit;
+}
 
 .slide.head {
+  z-index: 2;
   display: block;
   background-image: url('../img/back.svg');
   background-repeat: no-repeat;
@@ -134,9 +154,19 @@ body {
   margin: 0;
 }
 
-.slide.project {
+.slide.about {
+  text-align: center;
 }
-.slide.project a.button {
+
+.slide.project {
+  text-align: center;
+}
+.slide.project h2 {
+}
+.slide.project .launcher {
+  margin-top: 3em;
+}
+.slide.project .launcher a.button {
   background-color: rgba(255,255,255,0.5);
   border-radius: 1em;
   color: black;
@@ -148,6 +178,7 @@ body {
 }
 
 .slide.foot {
+  text-align: center;
 }
 
 @media (min-width:24em) {
