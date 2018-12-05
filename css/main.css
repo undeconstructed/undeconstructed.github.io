@@ -125,13 +125,17 @@ body {
   height: 100vh;
   position: relative;
   /* background-color: rgba(255,255,255,0.3); */
-  background-color: #4d4d4d;
+  background-color: #555555;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 0 0 2em 0;
 }
 .slides .slide+.slide {
   margin-top: 10px;
+}
+.slides .slide:last-child {
+  border-radius: 0;
 }
 
 .slide a {
@@ -141,18 +145,37 @@ body {
 .slide.head {
   z-index: 2;
   display: block;
-  background-image: url('../img/back.svg');
+  background-image: url('../img/phil.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 0 50%;
 }
+/* .slide.head > h1 {
+  position: absolute;
+  top: 65%;
+  left: 0.3em;
+  right: 0.3em;
+  text-align: center;
+  font-size: 7.5vw;
+  margin: 0;
+  transform-origin: top left;
+  transform: rotate(-22deg);
+} */
 .slide.head > h1 {
   position: absolute;
   bottom: 0.3em;
   right: 0.3em;
-  font-size: 6vw;
+  font-size: 6vh;
   margin: 0;
+  transform-origin: right top;
+  transform: rotate(90deg) translate(0.4em, 0.4em);
 }
+
+.slide p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 
 .slide.about {
   text-align: center;
@@ -181,11 +204,14 @@ body {
   text-align: center;
 }
 
-@media (min-width:24em) {
-  .slide.one {
-  }
-  .slide.one > h1 {
-    /* font-size: 3em; */
+@media (min-width:40em) {
+  .slide.head > h1 {
+    top: auto;
+    bottom: 0.3em;
+    right: 0.3em;
+    left: auto;
+    transform: none;
+    font-size: 6vw;
   }
 }
 
