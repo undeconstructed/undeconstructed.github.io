@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>re programming</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="icon" href="../icon.png">
+</head>
+
+<body class="doc">
+<div class="doc">
+
+  <h1>re programming</h1>
+
+  <p>misc thoughts about programming and how to get a deep enough understanding of what's going on.</p>
+
+  <h2>control</h2>
+
+  <p>programming is about saying what happens next. this is what makes it different to, for example, maths, when everything can be assumed to happen at the same time. html is similar, it has no concept of time.</p>
+
+  <p>time is not necessarily universal. computers tend to have their own idea of time, in that one thing happens after another</p>
+
+  <p>to break into a metaphor: when rain falls on a mountain, the drops run down to the sea. the path they take is normally a river. the form of the river is the program that the water drops take. if you put something in the river, you are changing the program.</p>
+
+  <p>so to be more abstract, we could say that programming is about controlling a flow. each drop of water, or bit of information, or even electron, in a system can be guided, using external control and information.</p>
+
+  <h2>logic</h2>
+
+  <p>each decision made in controlling the flow of your program is constrained by some logic decision.</p>
+
+  <p>if you dam a river to make power, you will selectively control how the river flows to make sure your turbines work well. the controller knows about this, but the river  doesn't.</p>
+
+  <p>these decisions are not made in the same time scale as the flow. if a person is controlling the dam they will know instantly when the resevoirs are full and its time to pull a lever.</p>
+
+  <p>this instantaneous change is not programming, it is simply a fact that something has gone from one state to another</p>
+
+  <h2>computers</h2>
+
+  <p>programming a computer is a compromise between control and logic. the flow of electrons through the processor must be used both as a flow of information to control, and also as a way of powering a machine that makes decisions.</p>
+
+  <p>there is no way for a computer to do anything instantly, everything must be expressed as "what to do next". at the processor level, next almost means "immediately after this instruction" and the what must be another instruction.</p>
+
+  <p>the software must always decide what instruction to run next. hardware features are available to manage jumps between instructions that depend on external events.</p>
+
+  <p>importance of knowing which is happening</p>
+
+  <h2>languages</h2>
+
+  <p>most languages do not support the compromise between control or logic very well.</p>
+
+  <p>in particular, object-oriented languages are not a good idea. the usual metaphor is that an object has life, and can perform actions. in fact an object normally only contains logic, to be called upon by tasks.</p>
+
+  <p>when an object represents a thread it is doing something fundamentally different. virtual functions mean that any piece of logic is able to be replaced by control, which leads to confusion.</p>
+
+  <p>most languages are very low level, in the sense that control cannot be transferred without OS support.</p>
+
+  <h2>systems</h2>
+
+  <p>threads are for scheduling! any thread that is not runnable not useful to anyone. if the hardware has only one core then multiple threads make no sense, they are just a way of circumventing a language program.</p>
+
+  <p>threads are an OS construct for allowing a process to use multiple cores at once. they are unfortunately also used for other things, such as allowing waiting on multiple resources.</p>
+
+  <p>sensible systems allow process to wait on as many resources as it wants without also intrducing multiple scheduling units.</p>
+
+</div>
+</body>
+
+</html>

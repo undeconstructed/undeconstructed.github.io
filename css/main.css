@@ -99,12 +99,20 @@ textarea {
 
 body {
   font-family: 'Cantarell', sans-serif;
+}
+
+body.home {
   background-color: rgb(0, 0, 0);
-  color: rgb(200, 200, 200);
+  color: rgb(50,50,50);
+}
+
+.slides {
+  margin-bottom: 50vh;
+  background-color: rgb(0, 0, 0);
 }
 
 .slides .up {
-  z-index: 1;
+  z-index: 20;
   position: fixed;
   top: 1em;
   right: 1em;
@@ -119,17 +127,17 @@ body {
   color: white;
 }
 
-.slides {
-}
 .slides .slide {
+  z-index: 10;
   height: 100vh;
   position: relative;
   /* background-color: rgba(255,255,255,0.3); */
-  background-color: #555555;
+  background: linear-gradient(to right, rgba(148,148,148,1) 0%, rgba(148,148,148,1) 2em, rgba(133,133,133,1) 2em, rgba(133,133,133,1) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0 0 2em 0;
+  padding: 0 2em;
 }
 .slides .slide+.slide {
   margin-top: 10px;
@@ -143,8 +151,9 @@ body {
 }
 
 .slide.head {
-  z-index: 2;
+  z-index: 100;
   display: block;
+  background: rgba(153,153,153,1);
   background-image: url('../img/phil.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -176,8 +185,10 @@ body {
   margin-right: 1em;
 }
 
-
 .slide.about {
+  text-align: center;
+}
+.slide.docs {
   text-align: center;
 }
 
@@ -200,8 +211,43 @@ body {
   background-color: rgba(255,255,255,0.9);
 }
 
-.slide.foot {
+#foot {
+  z-index: 0;
+}
+#foot div {
   text-align: center;
+  position: fixed;
+  top: 50vh;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: gray;
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+  justify-content: center;
+}
+#foot a {
+  color: inherit;
+}
+
+body.doc {
+  background-color: rgb(200, 200, 200);
+  color: rgb(0, 0, 0);
+  padding: 1em;
+  background-image: url('../img/phil.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-attachment: fixed;
+}
+
+div.doc {
+  background-color: rgba(220, 220, 220, 0.9);
+  max-width: 60em;
+  margin: auto;
+  padding: 1em;
+  border-radius: 2em;
 }
 
 @media (min-width:40em) {
