@@ -98,166 +98,205 @@ textarea {
    ========================================================================== */
 
 body {
-  font-family: 'Cantarell', sans-serif;
+ font-family: 'Cantarell', sans-serif;
 }
 
 body.home {
-  background-color: rgb(0, 0, 0);
-  color: rgb(50,50,50);
-}
-
-.slides {
-  margin-bottom: 50vh;
-  background-color: rgb(0, 0, 0);
-}
-
-.slides .up {
-  z-index: 20;
-  position: fixed;
-  top: 1em;
-  right: 1em;
-}
-.slides .up a {
-  font-size: 2em;
-  color: #aaaaaa;
-  text-decoration: none;
-  outline: none;
-}
-.slides .up a:hover {
-  color: white;
-}
-
-.slides .slide {
-  z-index: 10;
-  height: 100vh;
-  position: relative;
-  /* background-color: rgba(255,255,255,0.3); */
-  background: linear-gradient(to right, rgba(148,148,148,1) 0%, rgba(148,148,148,1) 2em, rgba(133,133,133,1) 2em, rgba(133,133,133,1) 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 0 2em 0;
-  padding: 0 2em;
-}
-.slides .slide+.slide {
-  margin-top: 10px;
-}
-.slides .slide:last-child {
-  border-radius: 0;
-}
-
-.slide a {
-  color: inherit;
-}
-
-.slide.head {
-  z-index: 100;
-  display: block;
-  background: rgba(153,153,153,1);
-  background-image: url('../img/phil.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 50%;
-}
-/* .slide.head > h1 {
-  position: absolute;
-  top: 65%;
-  left: 0.3em;
-  right: 0.3em;
-  text-align: center;
-  font-size: 7.5vw;
-  margin: 0;
-  transform-origin: top left;
-  transform: rotate(-22deg);
-} */
-.slide.head > h1 {
-  position: absolute;
-  bottom: 0.3em;
-  right: 0.3em;
-  font-size: 6vh;
-  margin: 0;
-  transform-origin: right top;
-  transform: rotate(90deg) translate(0.4em, 0.4em);
-}
-
-.slide p {
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-.slide.about {
-  text-align: center;
-}
-.slide.docs {
-  text-align: center;
-}
-
-.slide.project {
-  text-align: center;
-}
-.slide.project h2 {
-}
-.slide.project .launcher {
-  margin-top: 3em;
-}
-.slide.project .launcher a.button {
-  background-color: rgba(255,255,255,0.5);
-  border-radius: 1em;
-  color: black;
-  text-decoration: none;
-  padding: 1em;
-}
-.slide.project a.button:hover {
-  background-color: rgba(255,255,255,0.9);
-}
-
-#foot {
-  z-index: 0;
-}
-#foot div {
-  text-align: center;
-  position: fixed;
-  top: 50vh;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  color: gray;
-  display: flex;
-  flex-flow: column;
-  flex-direction: column;
-  justify-content: center;
-}
-#foot a {
-  color: inherit;
+ background-color: rgb(0,0,0);
+ color: rgb(50,50,50);
 }
 
 body.doc {
-  background-color: rgb(200, 200, 200);
-  color: rgb(0, 0, 0);
-  padding: 1em;
-  background-image: url('../img/phil.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
-  background-attachment: fixed;
+ background-color: rgb(220,220,220);
+ color: rgb(50,50,50);
+ padding: 1em;
 }
 
-div.doc {
-  background-color: rgba(220, 220, 220, 0.9);
-  max-width: 60em;
-  margin: auto;
-  padding: 1em;
-  border-radius: 2em;
+a {
+  color: inherit;
+}
+
+.launcher {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.launcher > .button {
+  background: rgb(255,255,255,.5);
+  border-radius: .5em;
+  padding: 0.5em;
+  text-decoration: none;
+  margin: 1em;
+}
+.launcher > .button:hover {
+  background: rgb(255,255,255,1);
 }
 
 @media (min-width:40em) {
-  .slide.head > h1 {
-    top: auto;
-    bottom: 0.3em;
-    right: 0.3em;
-    left: auto;
-    transform: none;
-    font-size: 6vw;
+  #head {
+    z-index: 0;
+    position: fixed;
+    background: rgba(153,153,153,1);
+    background-image: url('../img/phil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  #head.p1 {
+    top: 0;
+    left: -100vh;
+    width: 100vh;
+    height: 30vw;
+    transform-origin: top right;
+    transform: rotate(-0.25turn);
+  }
+  #head.p2 {
+    top: 0;
+    left: 30vw;
+    width: 100vh;
+    height: 30vw;
+    transform-origin: top left;
+    transform: rotate(0.25turn);
+  }
+  #head h1 {
+    display: none;
+  }
+
+  #side {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30vw;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255,255,255,.2)
+  }
+  #side > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    /* background: rgba(255,255,255,.5) */
+    color: white;
+  }
+  #side > div > p {
+    margin: 0.5em 0;
+  }
+
+  #content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 30vw;
+    z-index: 2;
+    overflow: auto;
+  }
+  #content > div {
+    padding: 1em;
+    background-color: rgb(120,120,120);
+    margin-bottom: 10em;
+  }
+  #content .slide+.slide {
+    margin-top: 5em;
+  }
+
+  #foot {
+    background-color: rgb(50,50,50);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 30vw;
+    height: 10em;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(200,200,200);
+  }
+  #foot > div {
+    padding: 1em;
+  }
+  #foot a {
+    color: inherit;
+  }
+}
+
+@media (max-width:40em) {
+  #head {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 50vh;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(153,153,153,1);
+    background-image: url('../img/phil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 50%;
+  }
+  #head > div {
+    display: none;
+  }
+
+  #side {
+    display: none;
+  }
+
+  #content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    overflow: auto;
+  }
+  #content > div {
+    background-color: rgb(120,120,120);
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+    padding: 1em;
+  }
+  #content .slide+.slide {
+    margin-top: 5em;
+  }
+
+  #foot {
+    background-color: rgb(50,50,50);
+    position: fixed;
+    top: 50vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(200,200,200);
+  }
+  #foot > div {
+    padding: 1em;
+  }
+  #foot a {
+    color: inherit;
   }
 }
 
