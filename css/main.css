@@ -107,9 +107,15 @@ body.home {
 }
 
 body.doc {
- background-color: rgb(220,220,220);
- color: rgb(50,50,50);
- padding: 1em;
+ background-color: rgb(50,50,50);
+}
+
+body.doc div.doc {
+  margin: auto;
+  background-color: rgb(220,220,220);
+  color: rgb(50,50,50);
+  max-width: 50em;
+  padding: 2em 1em;
 }
 
 a {
