@@ -16,61 +16,82 @@
 <body class="doc">
 <div class="doc">
 
-  <h1>Programming</h1>
-
-  <p>I intend to have another go at writing this in a useful way.</p>
-
-  <hr>
-
-  <p>misc thoughts about programming and how to get a deep enough understanding of what's going on.</p>
-
-  <h2>control</h2>
-
-  <p>programming is about saying what happens next. this is what makes it different to, for example, maths, when everything can be assumed to happen at the same time. html is similar, it has no concept of time.</p>
-
-  <p>time is not necessarily universal. computers tend to have their own idea of time, in that one thing happens after another</p>
-
-  <p>to break into a metaphor: when rain falls on a mountain, the drops run down to the sea. the path they take is normally a river. the form of the river is the program that the water drops take. if you put something in the river, you are changing the program.</p>
-
-  <p>so to be more abstract, we could say that programming is about controlling a flow. each drop of water, or bit of information, or even electron, in a system can be guided, using external control and information.</p>
-
-  <h2>logic</h2>
-
-  <p>each decision made in controlling the flow of your program is constrained by some logic decision.</p>
-
-  <p>if you dam a river to make power, you will selectively control how the river flows to make sure your turbines work well. the controller knows about this, but the river  doesn't.</p>
-
-  <p>these decisions are not made in the same time scale as the flow. if a person is controlling the dam they will know instantly when the resevoirs are full and its time to pull a lever.</p>
-
-  <p>this instantaneous change is not programming, it is simply a fact that something has gone from one state to another</p>
-
-  <h2>computers</h2>
-
-  <p>programming a computer is a compromise between control and logic. the flow of electrons through the processor must be used both as a flow of information to control, and also as a way of powering a machine that makes decisions.</p>
-
-  <p>there is no way for a computer to do anything instantly, everything must be expressed as "what to do next". at the processor level, next almost means "immediately after this instruction" and the what must be another instruction.</p>
-
-  <p>the software must always decide what instruction to run next. hardware features are available to manage jumps between instructions that depend on external events.</p>
-
-  <p>importance of knowing which is happening</p>
-
-  <h2>languages</h2>
-
-  <p>most languages do not support the compromise between control or logic very well.</p>
-
-  <p>in particular, object-oriented languages are not a good idea. the usual metaphor is that an object has life, and can perform actions. in fact an object normally only contains logic, to be called upon by tasks.</p>
-
-  <p>when an object represents a thread it is doing something fundamentally different. virtual functions mean that any piece of logic is able to be replaced by control, which leads to confusion.</p>
-
-  <p>most languages are very low level, in the sense that control cannot be transferred without OS support.</p>
-
-  <h2>systems</h2>
-
-  <p>threads are for scheduling! any thread that is not runnable not useful to anyone. if the hardware has only one core then multiple threads make no sense, they are just a way of circumventing a language program.</p>
-
-  <p>threads are an OS construct for allowing a process to use multiple cores at once. they are unfortunately also used for other things, such as allowing waiting on multiple resources.</p>
-
-  <p>sensible systems allow process to wait on as many resources as it wants without also intrducing multiple scheduling units.</p>
+<h1 id="thinking-about-programming">Thinking about programming</h1>
+<p>There will be two themes to this:</p>
+<ul>
+<li>What makes programming go well</li>
+<li>Where things went wrong with programming</li>
+</ul>
+<p>Hopefully I will manage in some way to bring them together.</p>
+<h2 id="networks">Networks</h2>
+<p>When people design networks, they will generally think about control plane and data plane. The intent is to separate the management of the network, from the actual job of that network.</p>
+<p>When these concerns are not separated, there are extra risks. For example, if a badly configured network node is rejecting traffic, how do you get a message to that node to reconfigure it, if your message is regarded as traffic?</p>
+<p>In practice, nobody ever completely separates these concerns. Nobody wants to have to run two cables to every node, so that control can be isolated. And even then, where would that control data go? It needs to be processed, so add another processor for it, but then it needs to access the local data plane machinery at some point, or it can’t control it. It’s impossible to completely isolate those functions.</p>
+<p>Instead, people normally rely on the foundations that are already in place. A node with an operating system is able to fairly well isolate processes. Each process can believe it has its own network connection, because the internet is designed to to behave as though there are infinitely many cables, connecting any two points, regardless of you only having one physical cable.</p>
+<p>As long as the foundation is relatively solid, virtual control and data planes can be built, which are as isolated from each other as is generally required.</p>
+<h2 id="systems">Systems</h2>
+<p>In fact, most systems benefit from a similar division of concerns. All actions can be categorised into either: 1) deciding what to do, or 2) doing it.</p>
+<p>This distinction is observed almost everywhere. Networks people talk about data and control planes. Organisations talk about managers and non-managers. Operating systems have kernel (system) and user (program) space.</p>
+<p>And in people there is brain and body. Approximately. That perhaps indicates why the same model appears all over the place. It’s basically how we get things done. We decide what to do, and then we do it.</p>
+<p>Maybe we decide to eat a whole chocolate cake, and then set the body to the task. The body might at some point give a signal that this was a bad idea, but it can’t decide to stop. The brain needs to receive that signal and decide what to do next.</p>
+<p>Yet somehow programming doesn’t follow this rule. Programming languages have been created that mean decisions can be made anywhere at any time, without there being a brain in control. Is that a fair analogy? Let’s see.</p>
+<h2 id="programs">Programs</h2>
+<p>When the first computer programs were written, they were very simple. The processor could only do a very small number of things, and it did them in the order it was instructed to. If a program were to say:</p>
+<pre><code>a = 1
+b = a + 2</code></pre>
+<p>Then the processor would first put the number 1 into a, then it would read a, add 2 to it, and store the answer into b. At the end, b would <em>always</em> contain 3. There was no question about that.</p>
+<p>In order to manage this sequence of actions, the processor would keep a program counter (PC) which said which instruction to run next. After each instruction it would add 1 to PC. That was the whole operation of computer. More or less.</p>
+<p>Programming languages came to be created that followed this example. Whenever the programmer wrote two lines of code next to each other, she could be sure that whatever state the world was in after the first line was finished, that was how it would be as the second line started.</p>
+<h2 id="processes">Processes</h2>
+<p>As computers became more advanced and powerful, it was useful to find a way for them to run multiple programs at the same time. In fact, a processor on its own can’t do that, because it can only do the basic of running and instruction, then incrementing PC and starting again.</p>
+<p>With some more advanced processors, which contained some special features just for this purpose, people could create operating systems. The idea of an operation system is to allow multiple programs to run on the same processor. The OS will use special processor instructions to interrupt and pause one process (instance of a program) and resume another.</p>
+<p>The beauty of this system is that each process is very much like a whole computer. It appears (to the program) as though a processor is following the same loop of running one instruction, incrementing the PC and starting again. As it happens, there are now lots of program counters, one for each process, but only the OS knows about that.</p>
+<p>Because of this subterfuge, there was no need for new programming languages, everyone could carry on using the languages that assumed each instruction was run in turn, just as before.</p>
+<p>As if by magic, lots of programs could be run at the same time on a single computer, all completely isolated from each other.</p>
+<h2 id="threads">Threads</h2>
+<p>Once an operating system has the ability to run more than one process at a time, its an easy enough step to allow it to run multiple parts of the same program at once. This is threads.</p>
+<p>Multiple threads of execution can be active within a single process. They are just like processes, except that they aren’t independent. Actually, they are just like processes except:</p>
+<ul>
+<li>they share the same memory</li>
+<li>they share the same permissions</li>
+<li>the programmer knows about them all upfront</li>
+<li>the programmer links them all together into one unit to deploy</li>
+</ul>
+<p>So they aren’t really anything like processes, and yet they are implemented in almost exactly the same way. Why?</p>
+<p>As far as I can tell, it’s because people didn’t want to make new programming languages. Instead of making their compilers produce instructions for doing multiple things at once, they asked the operating system to do it.</p>
+<p>As it happens, they completely broke their programming languages in the process. Now it is possible that a program contains the instructions:</p>
+<pre><code>a = 1
+b = a + 2</code></pre>
+<p>But another bit of the program contains <code>a = 5</code>, and that gets run in the middle, and that assumption from earlier about the state of the word not changing between instructions is wrong. Now nobody knows what is going to happen. So more gets added to the operating system, and now it’s possible for a programmer to tell the system not to run some instructions at some time. Where that time is already known by the programmer, but his programming language doesn’t let him express it, so he tells the operating system instead, and he has to do that every single time the program runs.</p>
+<h2 id="control">Control</h2>
+<p>Back to brains and bodies now. Within a single program, there will almost always be parts that are brain, and parts that are body. Let’s call these our control plane, and our process plane.</p>
+<p>A processor is made to do things in order, without thinking about it, so how is it possible to have an overview of what is happening in a our program, from inside it? From a low-level perspective, the only option is to occasionally stop what we are doing and think about it for a moment. Perhaps a program could be something like:</p>
+<pre><code>do_some_work()
+consider_what_happens_next()</code></pre>
+<p>That will work okay. It’s a bit annoying that instead of defining control and process planes we instead have to tell the one processor to switch back and forth between them, but that’s an artefact of this programming language being very closely bound to the processor underneath it.</p>
+<p>But suppose that work might take a very long time to run. Maybe we should be considering what to do before it finishes. Maybe we might even want to cancel it if is taking too long. Well, then we will have to break it into multiple parts:</p>
+<pre><code>do_work_part_1()
+consider_what_happens_next()
+do_work_part_2()
+consider_what_happens_next()
+do_work_part_3()
+consider_what_happens_next()</code></pre>
+<p>Or in other words, we will have to be a compiler. Our programming language doesn’t support the idea of control and process planes, so instead we have to do the work ourself.</p>
+<h2 id="digressions">Digressions</h2>
+<ul>
+<li><p>Unix had a solution for this, of course. If a program could be pushed solely into the process plane, then the OS is the control plane. It doesn’t necessarily work, because if the OS doesn’t have the control functionality required for some program, or is not efficient enough, then the program must control itself.</p></li>
+<li><p>Object oriented languages have the opposite of a solution for this. If it’s practically forbidden to know what will happen when you call a function, then how are you supposed to control it?</p></li>
+<li><p>Functional languages have massive advantages in terms of correctness, and in terms of allowing the programmer to concentrate on definition instead of the implementation. Conversely they are limited in terms of control, as they approximately assume that operations take no time to complete. This defines away the control/process dichotomy, but doesn’t solve it in the real world.</p></li>
+<li><p>JavaScript, with its single thread execution, provides a relatively easy way to decompose a program’s control and process planes, and so interleave their execution, but this is at the cost of having the programmer do that work, and of scattering the control plane definition throughout the source.</p></li>
+</ul>
+<h2 id="communication">Communication</h2>
+<p>Communicating sequential processes (CSP) describes a way of modelling systems in terms of independent processes, that communicate. It turns out to be possible to model almost anything in this way. In fact it’s incredibly natural, since most things that people do involve multiple people getting on with their own jobs, and occasionally talking to other people.</p>
+<p>Programming languages modelled on CSP define their own processes, as logical constructs, not as things tied to computer hardware. A programmer can rely on the old principle that the state of the world does not change between instructions, because that state is not a physical thing, and doesn’t depend on external factors.</p>
+<p>In a program of many small processes, the control and process planes are the sum of the processes deemed to be serving those purposes. Because the processes can communicate they can be arrange into whatever form of hierarchy or network provides control in a way the programmer can understand.</p>
+<h2 id="future">Future</h2>
+<p>Operating systems began as simple process multiplexors, and have broadly remained that way. Might it be interesting to try a different model, where it is accepted from the start that a program is under the supervision of the OS, and is not just running one instruction after another?</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Things could be better. That’s always the conclusion.</p>
 
 </div>
 </body>
