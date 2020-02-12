@@ -140,6 +140,22 @@ a {
   background: rgb(255,255,255,1);
 }
 
+.doc[lang="eo"] [lang="en"] {
+  opacity: 60%;
+}
+
+p.ekz {
+  background: gray;
+  padding: 2em;
+  margin: inherit 3em;
+}
+
+.bil {
+  display: grid;
+  grid-gap: .5em;
+  grid-template-columns: 50% 50%;
+}
+
 @media (min-width:40em) {
   #head {
     z-index: 0;
