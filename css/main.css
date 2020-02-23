@@ -196,7 +196,9 @@ p.ekz {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(255,255,255,.2)
+    background: rgba(255,255,255,.2);
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
+    z-index: 10;
   }
   #side > div {
     display: flex;
@@ -294,6 +296,7 @@ p.ekz {
     margin-top: 50vh;
     margin-bottom: 50vh;
     padding: 1em;
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
   }
   #content .slide+.slide {
     margin-top: 5em;
