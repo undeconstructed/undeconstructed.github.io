@@ -1,0 +1,277 @@
+
+:root {
+  --body-background: rgb(50,50,50);
+  --text-background: rgb(220,220,220);
+  --text-color: rgb(50,50,50);
+  --high-background: rgb(134,0,0);
+
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+  font-family: 'Cantarell', var(--font-family-sans-serif);
+  background-color: var(--body-background);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--high-background);
+}
+.side a:hover {
+  color: inherit;
+}
+.content {
+  background-color: var(--text-background);
+  color: var(--text-color);
+}
+
+.home {
+}
+.home .launcher {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.home .launcher > .button {
+  background: rgb(255,255,255,.5);
+  border-radius: .5em;
+  padding: 0.5em;
+  text-decoration: none;
+  margin: 1em;
+}
+.home .launcher > .button:hover {
+  background: rgb(255,255,255,1);
+}
+
+.doc {
+}
+.doc .homelink {
+  background-color: var(--high-background);
+  background-image: url('../img/phil.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.doc .homelink a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+.doc .homelink a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+.doc .content {
+  padding: 2rem 1rem 4rem 1rem;
+}
+.doc .ekz {
+  background: gray;
+  padding: 2em;
+  margin: inherit 3em;
+}
+.doc .bil {
+  display: grid;
+  grid-gap: .5rem;
+  grid-template-columns: 50% 50%;
+}
+.doc[lang="eo"] [lang="en"] {
+  opacity: 60%;
+}
+
+@media (min-width:40rem) {
+  .home .head {
+    z-index: 0;
+    position: fixed;
+    background: var(--high-background);
+    background-image: url('../img/phil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    top: 0;
+    left: 30vw;
+    width: 100vh;
+    height: 30vw;
+    transform-origin: top left;
+    transform: rotate(0.25turn);
+  }
+  .home .head h1 {
+    display: none;
+  }
+
+  .home .side {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30vw;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
+    z-index: 10;
+  }
+  .home .side > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    color: white;
+  }
+  .home .side > div > p {
+    margin: 0.5em 0;
+  }
+
+  .home .content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 30vw;
+    z-index: 2;
+    overflow: auto;
+    background: none;
+  }
+  .home .content > div {
+    padding: 1em;
+    background-color: var(--text-background);
+    margin-bottom: 10em;
+  }
+  .home .content .slide+.slide {
+    margin-top: 5em;
+  }
+
+  .home .foot {
+    background-color: var(--body-background);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 30vw;
+    height: 10em;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(200,200,200);
+  }
+  .home .foot > div {
+    padding: 1em;
+  }
+  .home .foot a {
+    color: inherit;
+  }
+
+  .doc .homelink {
+    position: fixed;
+    left: 0;
+    top: 5rem;
+    height: 4rem;
+    width: 10rem;
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
+    transform-origin: bottom left;
+    transform: rotate(0.25turn);
+  }
+
+  .doc .content {
+    margin: auto;
+    max-width: 50rem;
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
+  }
+}
+
+@media (max-width:40rem) {
+  .home .head {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 70vh;
+    left: 0;
+    z-index: 0;
+    background-color: var(--high-background);
+    background-image: url('../img/phil.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 0;
+  }
+  .home .head > div {
+    display: none;
+  }
+
+  .home .side {
+    position: fixed;
+    top: 20vh;
+    right: 0;
+    bottom: 30vh;
+    left: 0;
+    z-index: 1;
+  }
+  .home .side > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    color: white;
+  }
+
+  .home .content {
+    z-index: 3;
+    position: relative;
+    top: 70vh;
+    background: none;
+    padding-bottom: 30vh;
+  }
+  .home .content > div {
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
+    padding: 1em;
+    background-color: var(--text-background);
+  }
+  .home .content .slide+.slide {
+    margin-top: 5em;
+  }
+
+  .home .foot {
+    background-color: var(--body-background);
+    position: fixed;
+    top: 70vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(200,200,200);
+  }
+  .home .foot > div {
+    padding: 1em;
+  }
+  .home .foot a {
+    color: inherit;
+  }
+
+  .doc .homelink {
+    position: fixed;
+    bottom: 0;
+    right: 1em;
+    height: 4rem;
+    width: 5rem;
+    box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
+    z-index: 100;
+  }
+}
