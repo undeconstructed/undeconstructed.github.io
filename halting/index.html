@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Halting problems</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="icon" href="../icon.png">
+</head>
+
+<body class="doc">
+
+  <div class="homelink">
+    <a href="../">home</a>
+  </div>
+
+  <div class="content">
+
+<h1>Halting problems</h1>
+<p>Disclaimer: This is just thoughts of mine, maybe all wrong. Why not let me know?</p>
+<hr/>
+<p>If you run a computer program with a particular input, we can call that an invocation of the program.</p>
+<p>The "halting problem" is a thought experiment. It roughly says: imagine a computer program that can say whether an invocation will halt. If that halting program exists, another program can be written, using the halting program as a subroutine. We can now have a situation in which an invocation asks "will I halt?" and then is able to actively defy that prediction.</p>
+<p>It's essentially the Final Destination scenario. But more importantly people say it demonstrates that there is a limit on what can be computed. But does it actually say anything about computation, or is it just about human perception?</p>
+<p>Humans think that time exists. We also think that information also exists.</p>
+<p>From the point of view of a human, information is either present (perceivable now) or future (not perceivable now.) When humans do calculations they try to bring future information into the present, so that they can percieve it.</p>
+<p>In order to compute "1 + 1 + 1", we will need to perform "2 + 1". That "2" is future information, until we bring it into the present by performing the first addition. Having perceived that first result, we can perform the second action, and bring "3" into the present.</p>
+<p>A computing machine is a way of automatically achieving this. A program is written that will be able to react to future information as it moves into the present. This means that a program is able to instruct the machine to perform certain actions that will move the future information into the present, and then perform further actions on that newly perceivable information.</p>
+<p>This process requires that computers experience time in a similar way to humans. Computers bring future information into the present by moving (in time) between states until they reach the state that represents the desired information in the present. Or you could say that the point of a program is to send instructions forward in time until the information for them is available. Either way, the result is not perceivable until the result moves into the present.</p>
+<p>Every action a program invocation makes occurs in the invocation's present. If there is such a thing as time, the end of the program must always be in the invocation's future, because at any moment the invocation exists, it must have not ended yet.</p>
+<p>The halting problem introduces the idea of knowing whether an invocation will halt or not. If this information is available during the life of an invocation, then it is future information from the persepective of the invocation. If this information were perceivable, then there is no distinction between future and present information, and the computation itself is unncessary.</p>
+<p>If future and present information are the same, then all information is available at all "times", because time is just about perception. There is no need to go through the states required to bring information into the present, we can simply perceive the answer.</p>
+<p>To approach from the other side, we can assume that time is not absolute, and so all information is always available. We can upgrade our halting program into a full oracle that can tell the final result of any invocation.</p>
+<p>Now we can convert our program to simply ask the oracle what its answer will be, then print it. Naturally, since every program is now the same, the oracle can always reply with the same answer, which of course will be 42. Every invocation will be correctly foretold, so the oracle is always correct. And no work will be done.</p>
+<p>Of course no work needs to be done. All information is always available, so work is not neccessary to obtain it.</p>
+<p>What the answer won't be, is useful to our experience. Humans experience time, and the answer we received will be independent of time.</p>
+<p>Imagine for example we want a program to predict how the moon will move in the next hour. We call the oracle, and get the answer 42. Then we measure the moon's movement and get a totally different number. What went wrong?</p>
+<p>Well, our problem was expressed in relative terms. We wanted to know how the moon would appear to move according to our viewpoint, and, more importantly, during our perception of one hour - a concept that the oracle is independent of.</p>
+<p>If we were to improve our query to the oracle we might be able to fix this. If we input not only our invocation, but also our perception of time, then the oracle will be able to respond with not the result itself, but instructions on how we can perceive the answer. That is very likely to be something like "you will be able to perceive the answer after the events of this invocation have taken place."</p>
+<p>So effectively, if the computer and the operator both share the same sense of time, the oracle (or the halting program) must by definition make us wait until the future information moves into the present.</p>
+<p>And we only know how to build computers that share our perception of time, because we can only experience the results if they are brought into what we perceive as the present.</p>
+<p>If all knowledge is available at all times, and the universe is predetermined, then we must still wait for that information because of our limited ability to perceive.</p>
+<p>So the halting problem really only demonstrates that if time doesn't exist, there is no point doing computation. But we are obliged to act as though time exists, so ...</p>
+
+  </div>
+
+</body>
+
+</html>
