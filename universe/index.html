@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Universe machine</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="icon" href="../icon.png">
+</head>
+
+<body class="doc">
+
+  <div class="homelink">
+    <a href="../">home</a>
+  </div>
+
+  <div class="content">
+
+<h1>The universe as a machine</h1>
+<p>Draft</p>
+<hr/>
+<p>Our universe is inside a machine. That's enough of a trope that there's no surprise there. This is just a different explanation of how it might be.</p>
+<p>Begin with a 3 dimensional matrix of computing elements. I don't know what exactly this machine is for, but it's a massively parallel machine for calculating something. Each element is very simple, and just runs a standard loop. Every element is kept in sync, and is able to communicate with any other node.</p>
+<p>It looks like this machine is for calculating the movement of particles. The state of each element is a collection of the particles that are currently at that place in the virtual space. The goal of the elements is to find where those particles should go next. In order to do that they need to broadcast out their particles' information until another element sees that broadcast and claims it.</p>
+<p>The broadcast is achieved by sending information to the immediate neighbours. In the first cycle that a particle exists, its host element will send a broadcast that will travel one step. The receivers of that broadcast will process it during 1 cycle, and rebroadcast at the end of that cycle. The cycle time is therefore the propagation speed of this broadcast search.</p>
+<p>When an element receives a broadcast, and calculates that it should claim the particle in question, it will directly communicate with the source element to claim the particle. Particles are moved between elements directly, in 1 cycle of the machine.</p>
+<p>The broadcast is not in any way detectable, because the only output of the machine is the actual particle state. The broadcast is simply and implementation detail, that can only be detected when things do not work correctly.</p>
+<p>Everything in this system happens at the maximum propagation speed, as long as each element is able to fully process everything within the cycle time. Problems occur when that is no longer the case. If an element is overloaded, because of too many local particles or too many incoming broadcasts, for example, it will no longer run in lock-step with the machine.</p>
+<p>When overload begins, the overloaded elements will start to slow down the propagation of local broadcasts. Overloaded elements will also tend to overload their neighbours, creating moving patches of overload. This moving overload is not a feature of the machine, it's an artifact of the implementation.</p>
+<p>It seems that this is where mass appears in our universe. Mass is an area of overload, which breaks the rules of the system, because it is not in any way accounted for in the machine design. Broadcast searches through an overload area will arrive behind schedule at their destination, because the overloaded area is not propagating signals as fast as intended. Possibly at some point the broadcasts will even be lost when overloaded elements fail to notice them in time.</p>
+<p>An overload area is therefore able to exert some limited control over the machine - by extending overload into particular elements, it can control the broadcast propagation through those elements.</p>
+<p>Life is the emergent behaviour of this overload. The overload is able to propagate itself if it behaves in a certain way - a way that includes some knowledge of the machine's usual function. Every broadcast that passes through an overload area is detectable to that overload, in a way that was never intended in the machine's design. While each element is unaware of its purpose, the interaction of overloaded elements can create awareness.</p>
+
+  </div>
+
+</body>
+
+</html>
