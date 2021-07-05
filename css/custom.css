@@ -86,6 +86,17 @@ a:hover {
   opacity: 60%;
 }
 
+.para {
+  color: rgba(0,0,0,0);
+  text-decoration: none !important;
+}
+.para::after {
+  content: "¶";
+}
+*:hover > .para {
+  color: rgba(0,0,0,0.5)
+}
+
 @media (min-width:40rem) {
   .home .head {
     z-index: 0;
