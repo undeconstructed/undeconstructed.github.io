@@ -11,93 +11,94 @@
 
 body {
   font-family: 'Cantarell', var(--font-family-sans-serif);
-  background-color: var(--body-background);
-}
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-}
-a {
-  color: inherit;
-  text-decoration: underline;
-}
-a:hover {
-  color: var(--high-background);
-}
-.side a:hover {
-  color: inherit;
-}
-.content {
-  background-color: var(--text-background);
-  color: var(--text-color);
 }
 
-.home {
-}
-.home .launcher {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.home .launcher > .button {
-  background: rgb(255,255,255,.5);
-  border-radius: .5em;
-  padding: 0.5em;
-  text-decoration: none;
-  margin: 1em;
-}
-.home .launcher > .button:hover {
-  background: rgb(255,255,255,1);
+@media screen {
+  body {
+    background-color: var(--body-background);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: var(--high-background);
+  }
+  .side a:hover {
+    color: inherit;
+  }
+  .content {
+    background-color: var(--text-background);
+    color: var(--text-color);
+  }
+
+  .home .launcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .home .launcher > .button {
+    background: rgb(255,255,255,.5);
+    border-radius: .5em;
+    padding: 0.5em;
+    text-decoration: none;
+    margin: 1em;
+  }
+  .home .launcher > .button:hover {
+    background: rgb(255,255,255,1);
+  }
+
+  .doc .homelink {
+    background-color: var(--high-background);
+    background-image: url('../img/phil.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  .doc .homelink a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+  }
+  .doc .homelink a:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  .doc .content {
+    padding: 2rem 1rem 4rem 1rem;
+  }
+  .doc .ekz {
+    background: gray;
+    padding: 2em;
+    margin: inherit 3em;
+  }
+  .doc .bil {
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: 50% 50%;
+  }
+  .doc[lang="eo"] [lang="en"] {
+    opacity: 60%;
+  }
+
+  .para {
+    color: rgba(0,0,0,0);
+    text-decoration: none !important;
+  }
+  .para::after {
+    content: "¶";
+  }
+  *:hover > .para {
+    color: rgba(0,0,0,0.5)
+  }
 }
 
-.doc {
-}
-.doc .homelink {
-  background-color: var(--high-background);
-  background-image: url('../img/phil.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-}
-.doc .homelink a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  font-size: 0;
-}
-.doc .homelink a:hover {
-  background-color: rgba(255,255,255,0.1);
-}
-.doc .content {
-  padding: 2rem 1rem 4rem 1rem;
-}
-.doc .ekz {
-  background: gray;
-  padding: 2em;
-  margin: inherit 3em;
-}
-.doc .bil {
-  display: grid;
-  grid-gap: .5rem;
-  grid-template-columns: 50% 50%;
-}
-.doc[lang="eo"] [lang="en"] {
-  opacity: 60%;
-}
-
-.para {
-  color: rgba(0,0,0,0);
-  text-decoration: none !important;
-}
-.para::after {
-  content: "¶";
-}
-*:hover > .para {
-  color: rgba(0,0,0,0.5)
-}
-
-@media (min-width:40rem) {
+@media screen and (min-width:60rem) {
   .home .head {
     z-index: 0;
     position: fixed;
@@ -202,7 +203,7 @@ a:hover {
   }
 }
 
-@media (max-width:40rem) {
+@media screen and (max-width:60rem) {
   .home .head {
     position: fixed;
     top: 0;
@@ -281,8 +282,15 @@ a:hover {
     bottom: 0;
     right: 1em;
     height: 4rem;
-    width: 5rem;
+    width: 8rem;
     box-shadow: -2px 0px 10px 0px rgba(0,0,0,0.75);
     z-index: 100;
+  }
+}
+
+@media print {
+
+  .doc .homelink {
+    display: none;
   }
 }
